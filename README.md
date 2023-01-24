@@ -10,6 +10,13 @@ I used several libraries bellow :
 - [Dio](https://docs.flutter.dev/cookbook)
 - [Hive](https://docs.flutter.dev/cookbook)
 
+## Next todo
+
+Next I need todo :
+
+- Modularize application : Separate application into small module
+- Test application
+
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
