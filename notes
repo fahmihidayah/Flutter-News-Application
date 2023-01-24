@@ -1,0 +1,19 @@
+- factory directory :
+    - create single object Dio
+    - create single object shared preference / hive
+    - create single object database helper
+
+- routing handler :
+    - Route with name
+    - Pass argument
+    - return data
+
+- list with key
+
+- form submition
+
+- error page
+
+- testing
+    - unit test
+    - integration test
