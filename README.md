@@ -1,15 +1,14 @@
-# news_app
+# Sample News App Flutter
 
-A new Flutter project.
+This is a Sample news app flutter for learning purpose. 
 
-## Getting Started
+## Libraries 
 
-This project is a starting point for a Flutter application.
+I used several libraries bellow :
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- [BLOC](https://docs.flutter.dev/get-started/codelab)
+- [Dio](https://docs.flutter.dev/cookbook)
+- [Hive](https://docs.flutter.dev/cookbook)
 
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
