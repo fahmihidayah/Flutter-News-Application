@@ -8,3 +8,9 @@ class SplashInitial extends SplashState {}
 class FinishInitialSplashState extends SplashState {
 
 }
+
+class ErrorSplashState extends SplashState {
+  String? message;
+
+  ErrorSplashState(this.message);
+}

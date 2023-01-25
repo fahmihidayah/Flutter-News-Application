@@ -10,7 +10,7 @@ class LoginScreen extends StatelessWidget {
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(
             margin: EdgeInsets.all(10),
@@ -30,13 +30,13 @@ class LoginScreen extends StatelessWidget {
             ),
           ),
           Container(
-            height: 40,
+            height: 50,
             margin: EdgeInsets.all(10),
             child: ElevatedButton(
                 onPressed: () {},
                 child: Text(
                   "Login",
-                  style: TextStyle(fontWeight: FontWeight.w900),
+                  style: TextStyle(fontWeight: FontWeight.w900, fontSize: 17),
                 )),
           )
         ],

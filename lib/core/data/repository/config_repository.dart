@@ -1,3 +1,5 @@
+import 'package:news_app/core/data/models/Configuration.dart';
+import 'package:news_app/core/data/models/base_response.dart';
 import 'package:news_app/core/data/remote/config_api.dart';
 
 class ConfigRepository {
@@ -6,7 +8,7 @@ class ConfigRepository {
 
   ConfigRepository({required this.configApi});
 
-  void getListConfig() {
-    configApi.getListConfig();
+  Future<BaseResponse<List<Configuration>>> getListConfig() async {
+    return await configApi.getListConfig();
   }
 }

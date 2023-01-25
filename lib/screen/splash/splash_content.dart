@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_app/core/application/route/route_builder.dart';
 import 'package:news_app/core/widget/base_bloc_content_widget.dart';
+import 'package:news_app/screen/login/login_screen.dart';
 import 'package:news_app/screen/splash/bloc/splash_bloc.dart';
 
 class SplashContentWidget extends BaseBlocContentStatelessWidget<SplashBloc, SplashState> {
@@ -31,6 +33,7 @@ class SplashContentWidget extends BaseBlocContentStatelessWidget<SplashBloc, Spl
   @override
   void buildListener(BuildContext context, SplashState state) {
     if(state is FinishInitialSplashState) {
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => LoginScreen()));
     }
   }
 

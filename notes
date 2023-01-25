@@ -3,6 +3,13 @@
     - create single object shared preference / hive
     - create single object database helper
 
+- handle resource :
+    - image
+    - colors
+    - styles
+    - strings
+    - dimensions
+
 - routing handler :
     - Route with name
     - Pass argument
@@ -17,3 +24,9 @@
 - testing
     - unit test
     - integration test
+
+- File picker
+
+- location permission
+
+- Map
