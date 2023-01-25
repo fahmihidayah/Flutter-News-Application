@@ -1,7 +1,11 @@
 - factory directory :
-    - create single object Dio
+    - create single object Dio (done)
     - create single object shared preference / hive
     - create single object database helper
+
+- Dio :
+    - add header for auth
+    - separate base url, time out value, to env file
 
 - handle resource :
     - image
@@ -11,6 +15,7 @@
     - dimensions
 
 - routing handler :
+    - Normal Route (done)
     - Route with name
     - Pass argument
     - return data
