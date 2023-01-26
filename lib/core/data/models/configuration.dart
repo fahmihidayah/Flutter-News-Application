@@ -1,6 +1,5 @@
 class Configuration {
 
-
   Configuration({
       this.key, 
       this.value, 

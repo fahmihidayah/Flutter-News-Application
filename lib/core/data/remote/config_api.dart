@@ -10,6 +10,7 @@ class ConfigApi extends BaseApi {
   ConfigApi({required this.dio});
 
   Future<BaseResponse<List<Configuration>>> getListConfig() async {
+    // dio.get("v1/configurations").then((value) => {} ).catchError((error) => {});
     final BaseResponse<List<Configuration>> response = await processRequest(() async {
       return await dio.get("v1/configurations");
     }, (rawData) {
