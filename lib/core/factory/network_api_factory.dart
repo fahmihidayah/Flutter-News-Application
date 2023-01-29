@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
-class NetworkAPIInitializer {
+class NetworkAPIFactory {
   static Dio createDioInstance() {
     Dio dio = Dio()
       ..options.baseUrl = "http://192.168.100.147:8081/api/"

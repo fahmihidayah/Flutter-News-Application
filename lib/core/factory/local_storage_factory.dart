@@ -1,4 +1,4 @@
-class LocalStorageInitializer {
+class LocalStorageFactory {
   static void createInstance() {
 
   }
