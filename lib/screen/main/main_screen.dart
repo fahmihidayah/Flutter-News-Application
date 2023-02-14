@@ -7,6 +7,13 @@ import 'package:news_app/screen/favourite/favourite_screen.dart';
 import 'package:news_app/screen/home/home_screen.dart';
 import 'package:news_app/screen/profile/profile_screen.dart';
 
+class MainScreenMenu {
+  Widget widget;
+  String title;
+
+  MainScreenMenu(this.widget, this.title);
+}
+
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
@@ -19,22 +26,18 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
 
-  List<Widget> _contentWidget = [
-    HomeScreen(),
-    ExploreScreen(),
-    FavouriteScreen(),
-    ProfileScreen()
+  List<MainScreenMenu> _contentWidget = [
+    MainScreenMenu(HomeScreen(), "Home"),
+    MainScreenMenu(ExploreScreen(), "Explore"),
+    MainScreenMenu(FavouriteScreen(), "Favoutite"),
+    MainScreenMenu(ProfileScreen(), "Profile"),
   ];
 
-  List<String> _titleText = ["Home", "Explore", "Favourite", "Profile"];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(_titleText[_currentIndex]),
-      ),
-      body: _contentWidget[_currentIndex],
+      body: _contentWidget[_currentIndex].widget,
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         currentIndex: _currentIndex,

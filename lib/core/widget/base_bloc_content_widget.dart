@@ -12,14 +12,14 @@ abstract class BaseBlocContentStatelessWidget<B extends StateStreamableSource<S>
   }
 
   Widget buildContentWidget(BuildContext context, S state) {
-    return Stack(
+    return SafeArea(child: Stack(
       children: [
         Scaffold(
           appBar: createAppBar(context, state),
           body: buildBodyWidget(context, state),
         )
       ],
-    );
+    ));
   }
 
   void buildListener(BuildContext context, S state) {
