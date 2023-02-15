@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_app/core/data/remote/article_api.dart';
-import 'package:news_app/core/data/remote/auth_api.dart';
-import 'package:news_app/core/data/remote/config_api.dart';
-import 'package:news_app/core/data/repository/article_repository.dart';
-import 'package:news_app/core/data/repository/auth_repository.dart';
-import 'package:news_app/core/data/repository/config_repository.dart';
+import 'package:news_app/data/remote/article/article_api.dart';
+import 'package:news_app/data/remote/auth/auth_api.dart';
+import 'package:news_app/data/remote/auth/auth_api_impl.dart';
+import 'package:news_app/data/remote/config/config_api.dart';
+import 'package:news_app/data/repository/article/article_repository.dart';
+import 'package:news_app/data/repository/article/article_repository_impl.dart';
+import 'package:news_app/data/repository/auth_repository.dart';
+import 'package:news_app/data/repository/config_repository.dart';
 
 List<RepositoryProvider<dynamic>> getRepositoryProvider() => [
       RepositoryProvider<ConfigRepository>(
@@ -15,6 +17,6 @@ List<RepositoryProvider<dynamic>> getRepositoryProvider() => [
           create: (context) =>
               AuthRepository(authApi: RepositoryProvider.of<AuthApi>(context))),
       RepositoryProvider<ArticleRepository>(
-          create: (context) => ArticleRepository(
+          create: (context) => ArticleRepositoryImpl(
               articleApi: RepositoryProvider.of<ArticleApi>(context))),
     ];

@@ -1,30 +1,28 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_app/screen/splash/bloc/splash_bloc.dart';
 
-abstract class BaseBlocContentStatelessWidget<B extends StateStreamableSource<S>, S> extends StatelessWidget {
-
+abstract class BaseBlocContentStatelessWidget<
+    B extends StateStreamableSource<S>, S> extends StatelessWidget {
   String appBarTitle = "Home";
 
   BlocConsumer<B, S> buildBloc(BuildContext context) {
-    return BlocConsumer<B, S>(builder: buildContentWidget,  listener: buildListener);
+    return BlocConsumer<B, S>(
+        builder: buildContentWidget, listener: buildListener);
   }
 
   Widget buildContentWidget(BuildContext context, S state) {
-    return SafeArea(child: Stack(
+    return Stack(
       children: [
         Scaffold(
           appBar: createAppBar(context, state),
           body: buildBodyWidget(context, state),
         )
       ],
-    ));
+    );
   }
 
-  void buildListener(BuildContext context, S state) {
-
-  }
+  void buildListener(BuildContext context, S state) {}
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +30,9 @@ abstract class BaseBlocContentStatelessWidget<B extends StateStreamableSource<S>
   }
 
   AppBar? createAppBar(BuildContext context, S state) {
-    return AppBar(title: Text(appBarTitle),);
+    return AppBar(
+      title: Text(appBarTitle),
+    );
   }
 
   Widget buildBodyWidget(BuildContext context, S state) {
@@ -50,7 +50,9 @@ abstract class BaseBlocContentStatelessWidget<B extends StateStreamableSource<S>
           color: Colors.black12,
         ),
         Center(
-          child: CircularProgressIndicator(color: Colors.blue,),
+          child: CircularProgressIndicator(
+            color: Colors.blue,
+          ),
         )
       ],
     );
