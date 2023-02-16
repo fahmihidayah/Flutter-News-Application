@@ -1,5 +1,5 @@
-import 'package:news_app/core/data/models/Configuration.dart';
 import 'package:news_app/data/models/base_response.dart';
+import 'package:news_app/data/models/configuration.dart';
 import 'package:news_app/data/remote/config/config_api.dart';
 
 class ConfigRepository {

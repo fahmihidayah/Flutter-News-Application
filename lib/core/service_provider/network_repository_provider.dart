@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_app/core/factory/network_api_factory.dart';
+import 'package:news_app/core/service_provider/factory/network_api_factory.dart';
 import 'package:news_app/data/remote/article/article_api.dart';
 import 'package:news_app/data/remote/article/article_api_impl.dart';
 import 'package:news_app/data/remote/auth/auth_api.dart';

@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:meta/meta.dart';
-import 'package:news_app/core/data/models/Configuration.dart';
 import 'package:news_app/data/models/base_response.dart';
+import 'package:news_app/data/models/configuration.dart';
 import 'package:news_app/data/repository/config_repository.dart';
 
 part 'splash_event.dart';

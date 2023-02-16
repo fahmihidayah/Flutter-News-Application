@@ -3,10 +3,16 @@ part of 'home_bloc.dart';
 @immutable
 abstract class HomeState {}
 
-class HomeInitial extends HomeState {
-  final List<Article>? listArticle;
+class HomeStateSuccess extends HomeState {
+  final List<Article> listArticle;
 
-  HomeInitial({this.listArticle});
+  HomeStateSuccess({required this.listArticle});
+}
+
+class HomeStateFailure extends HomeState {
+  final Failure failure;
+
+  HomeStateFailure({required this.failure});
 }
 
 class HomeStateProgress extends HomeState {

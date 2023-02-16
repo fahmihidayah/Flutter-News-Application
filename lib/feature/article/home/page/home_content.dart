@@ -15,13 +15,13 @@ class HomeContentWidget
   }
 
   Widget buildBodyWidget(BuildContext context, HomeState state) {
-    if(state is HomeInitial && state.listArticle?.isNotEmpty == true) {
+    if(state is HomeStateSuccess && state.listArticle?.isNotEmpty == true) {
       return ListView.builder(itemCount : state.listArticle?.length ,itemBuilder: (context, index) {
         return ArticleRegularItem(article: state.listArticle?[index],);
       });
     }
     else if (state is HomeStateProgress) {
-      return Center(
+      return const Center(
         child: CircularProgressIndicator(
           color: Colors.blue,
         ),

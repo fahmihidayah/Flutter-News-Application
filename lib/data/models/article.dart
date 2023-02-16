@@ -1,4 +1,5 @@
-import 'package:news_app/core/data/models/Author.dart';
+
+import 'package:news_app/data/models/author.dart';
 
 class Article {
     Author? author;

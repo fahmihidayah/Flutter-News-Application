@@ -1,6 +1,6 @@
 import 'dart:ffi';
 
-import 'package:news_app/core/data/models/Article.dart';
+import 'package:news_app/data/models/article.dart';
 import 'package:news_app/data/models/base_response.dart';
 import 'package:news_app/data/remote/base_api.dart';
 
