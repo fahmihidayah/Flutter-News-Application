@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 class BaseResponse<T> {
   String message;
   bool error;

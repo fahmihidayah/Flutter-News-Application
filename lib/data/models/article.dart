@@ -1,4 +1,3 @@
-
 import 'package:news_app/data/models/author.dart';
 
 class Article {
