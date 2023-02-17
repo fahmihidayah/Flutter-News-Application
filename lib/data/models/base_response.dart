@@ -1,7 +1,7 @@
 class BaseResponse<T> {
-  String message;
-  bool error;
-  int code;
+  String message = "";
+  bool error = false;
+  int code = 0;
   T? details;
 
   BaseResponse({required this.code,
@@ -18,7 +18,7 @@ class BaseResponse<T> {
     );
   }
 
-  Map<String, dynamic> toJson(T? details) {
+  Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['code'] = this.code;
     data['error'] = this.error;
