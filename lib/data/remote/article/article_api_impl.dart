@@ -5,14 +5,19 @@ import 'package:news_app/data/models/article.dart';
 import 'package:news_app/data/models/base_response.dart';
 import 'package:news_app/data/remote/article/article_api.dart';
 
-class ArticleApiImpl extends ArticleApi  {
+class ArticleApiImpl extends ArticleApi {
   Dio dio;
 
   ArticleApiImpl({required this.dio});
 
   @override
-  Future<BaseResponse<Article>> getArticleById(Long id) async {
-    return BaseResponse(code : 0, details : Article(), error: false, message : "");
+  Future<BaseResponse<Article>> getArticleById(String id) async {
+    final BaseResponse<Article> response = await processRequest(() async {
+      return await dio.get('v1/article/$id');
+    },
+        (rawData) => BaseResponse.fromJson(rawData,
+            details: Article.fromJson(rawData['details'])));
+    return response;
   }
 
   @override

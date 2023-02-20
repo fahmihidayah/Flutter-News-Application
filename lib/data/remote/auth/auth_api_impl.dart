@@ -10,10 +10,10 @@ class AuthApiImpl extends AuthApi {
 
   AuthApiImpl({required this.dio});
 
-  Future<BaseResponse<User>?> login(LoginForm loginForm) async {
+  Future<BaseResponse<User>> login(LoginForm loginForm) async {
     final BaseResponse<User> response = await processRequest(() async =>
     await dio.post(
-        "v1/login", data: {'username': loginForm.username, 'password': loginForm.password}), (
+        "v1/login", data: loginForm.toJson()), (
         rawData) => BaseResponse.fromJson(rawData, details: User.fromJson(rawData['details']))
     );
     return response;

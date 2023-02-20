@@ -7,5 +7,5 @@ import 'package:news_app/data/remote/base_api.dart';
 abstract class ArticleApi extends BaseApi {
 
   Future<BaseResponse<List<Article>>> getListArticle();
-  Future<BaseResponse<Article>> getArticleById(Long id);
+  Future<BaseResponse<Article>> getArticleById(String id);
 }

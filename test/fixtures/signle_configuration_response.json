@@ -1,0 +1,12 @@
+{
+  "message": "Success Request",
+  "error": false,
+  "code": 201,
+  "details": {
+    "pk": 6,
+    "key": "ios_message",
+    "value": "some message",
+    "created_at": "2023-02-20 03:09:30",
+    "updated_at": "2023-02-20 03:09:30"
+  }
+}

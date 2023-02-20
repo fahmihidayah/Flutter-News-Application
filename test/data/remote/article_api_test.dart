@@ -38,7 +38,27 @@ void main() {
     test('request to v1/articles make sure it called', () async {
       prepareSuccessfulRequest();
       final testResponse = await articleApi.getListArticle();
-      expect(testResponse.code, response.code);
+      expect(testResponse.details?.length, response.details?.length);
+    });
+  });
+
+  group('getArticle', () {
+    final Map<String, dynamic> mapResponse = json.decode(fixture("article_detail_response.json"));
+    final BaseResponse<Article> response = BaseResponse.fromJson(mapResponse,
+        details: Article.fromJson(mapResponse['details'])
+    );
+    void prepareSuccessfulRequest() {
+      when(mockDio.get("v1/article/1")).thenAnswer((_) => Future.value(Response(
+          statusCode: 200,
+          data: mapResponse,
+          requestOptions: RequestOptions(path: 'v1/article/1')
+      )));
+    }
+
+    test('request to v1/article/1 make sure it called', () async {
+      prepareSuccessfulRequest();
+      final testResponse = await articleApi.getArticleById("1");
+      expect(testResponse.details?.title, response.details?.title);
     });
   });
 }
