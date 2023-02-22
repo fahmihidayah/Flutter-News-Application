@@ -23,4 +23,18 @@ class ArticleRepositoryImpl implements ArticleRepository {
     }
   }
 
+  @override
+  Future<Either<Failure, BaseResponse<Article>>> getArticleById(String id) async {
+    try {
+      final result = await articleApi.getArticleById(id);
+      if(result.error) {
+        return Left(ServerFailure());
+      }
+      return Right(result);
+    }
+    catch (e) {
+      return Left(ServerFailure());
+    }
+  }
+
 }
