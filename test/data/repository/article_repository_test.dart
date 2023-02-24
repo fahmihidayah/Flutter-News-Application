@@ -13,6 +13,7 @@ import 'package:news_app/data/repository/article/article_repository.dart';
 import 'package:news_app/data/repository/article/article_repository_impl.dart';
 
 import '../../fixtures/fixtures_reader.dart';
+import '../../fixtures/model/article_fixtures.dart';
 import 'article_repository_test.mocks.dart';
 
 @GenerateMocks([ArticleApi])
@@ -24,11 +25,8 @@ void main() {
     articleRepository = ArticleRepositoryImpl(articleApi: mockArticleApi);
   });
 
-  group('get list article', () {
-    final Map<String, dynamic> mapResponse = json.decode(fixture("article_response.json"));
-    final BaseResponse<List<Article>> response = BaseResponse.fromJson(mapResponse,
-        details: (mapResponse['details'] as List).map((e) => Article.fromJson(e)).toList()
-    );
+  group('getListArticle', () {
+    final BaseResponse<List<Article>> response = getBaseResponseListArticle();
 
     void prepareSuccessfulResponse() {
       when(mockArticleApi.getListArticle()).thenAnswer((realInvocation) async => await Future.value(response));
@@ -43,10 +41,8 @@ void main() {
   });
 
   group('getArticle', () {
-    final Map<String, dynamic> mapResponse = json.decode(fixture("article_detail_response.json"));
-    final BaseResponse<Article> response = BaseResponse.fromJson(mapResponse,
-        details: Article.fromJson(mapResponse['details'])
-    );
+
+    final BaseResponse<Article> response = getBaseResponseArticle();
 
     void prepareSuccessfulResponse() {
       when(mockArticleApi.getArticleById('1')).thenAnswer((realInvocation) async => await Future.value(response));

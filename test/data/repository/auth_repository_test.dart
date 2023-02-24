@@ -11,6 +11,7 @@ import 'package:news_app/data/repository/auth/auth_repository.dart';
 import 'package:news_app/data/repository/auth/auth_repository_impl.dart';
 
 import '../../fixtures/fixtures_reader.dart';
+import '../../fixtures/model/auth_fixtures.dart';
 import 'auth_repository_test.mocks.dart';
 
 @GenerateMocks([AuthApi])
@@ -22,10 +23,9 @@ void main() {
     authRepository = AuthRepositoryImpl(authApi: mockAuthApi);
   });
 
-  group('login Api', () {
-    final mapResponse = json.decode(fixture('auth_response.json'));
-    final BaseResponse<User> response = BaseResponse.fromJson(mapResponse,
-        details: User.fromJson(mapResponse['details']));
+  group('login', () {
+
+    final BaseResponse<User> response = getBaseResponseUser();
 
     final LoginForm loginForm =
         LoginForm(username: 'fahmi', password: '123456789');
@@ -35,7 +35,7 @@ void main() {
           .thenAnswer((realInvocation) async => Future.value(response));
     }
 
-    test('test login api return success', () async {
+    test('test login method return success', () async {
       prepareSuccessfulResponse();
       final actualResponse = await authRepository.login(loginForm);
       expect(actualResponse.isRight(), true);

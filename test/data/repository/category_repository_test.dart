@@ -10,6 +10,7 @@ import 'package:news_app/data/repository/category/category_repository.dart';
 import 'package:news_app/data/repository/category/category_repository_impl.dart';
 
 import '../../fixtures/fixtures_reader.dart';
+import '../../fixtures/model/categories_fixtures.dart';
 import 'category_repository_test.mocks.dart';
 
 @GenerateMocks([CategoryApi])
@@ -22,18 +23,13 @@ void main() {
   });
 
   group('getListCategory', () {
-    final Map<String, dynamic> mapResponse =
-        json.decode(fixture('categories_response.json'));
-    final BaseResponse<List<Category>> response = BaseResponse.fromJson(
-        mapResponse,
-        details: (mapResponse['details'] as List)
-            .map((e) => Category.fromJson(e))
-            .toList());
+
+    final BaseResponse<List<Category>> response = getBaseResponseListCategory();
     void prepareSuccessfulResponse() {
       when(mockCategoryApi.getListCategories()).thenAnswer((realInvocation) => Future.value(response));
     }
     
-    test('request list categories return success', () async {
+    test('test getListCategory return success', () async {
       prepareSuccessfulResponse();
       final actualResponse = await categoryRepository.getListCategory();
       expect(actualResponse.isRight(), true);
