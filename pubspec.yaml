@@ -50,6 +50,8 @@ dependencies:
 
   flutter_bloc: ^8.1.1
 
+  bloc_test: ^9.1.1
+
   equatable: ^2.0.5
 
   flutter_svg: ^1.1.5
@@ -67,6 +69,8 @@ dependencies:
   cached_network_image: ^3.2.2
 
   shimmer: ^2.0.0
+
+
 
 #  flutter_flavorizr: ^2.1.5
 

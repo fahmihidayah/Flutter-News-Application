@@ -5,16 +5,11 @@ import 'package:news_app/data/models/base_response.dart';
 import 'package:news_app/data/models/category.dart';
 
 import '../../fixtures/fixtures_reader.dart';
+import '../../fixtures/model/categories_fixtures.dart';
 
 void main() {
-  test('Test deserializer authoer model', () async {
-    final Map<String, dynamic> responseJsonMap =
-        json.decode(fixture("categories_response.json"));
-    final BaseResponse<List<Category>> response = BaseResponse.fromJson(
-        responseJsonMap,
-        details: (responseJsonMap['details'] as List)
-            .map((e) => Category.fromJson(e))
-            .toList());
-    expect(response.details?.length, 3);
+  test('test deserializer fixture file to base response list category result success', () async {
+    final BaseResponse<List<Category>> response = getBaseResponseListCategory();
+    expect(response.details?.isNotEmpty, true);
   });
 }

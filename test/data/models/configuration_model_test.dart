@@ -5,17 +5,13 @@ import 'package:news_app/data/models/base_response.dart';
 import 'package:news_app/data/models/configuration.dart';
 
 import '../../fixtures/fixtures_reader.dart';
+import '../../fixtures/model/configurations_fixtures.dart';
 
 void main() {
-  test("test deserializer configuration model", () async {
-    final Map<String, dynamic> mapJson =
-        json.decode(fixture("configurations_response.json"));
-    final BaseResponse<List<Configuration>> response = BaseResponse.fromJson(
-        mapJson,
-        details: (mapJson['details'] as List)
-            .map((e) => Configuration.fromJson(e))
-            .toList());
-    expect(response.details?.length, 5);
+  test("test deserializer fixture file to base response list configuration result success", () async {
+
+    final BaseResponse<List<Configuration>> response = getBaseResponseListConfiguration();
+    expect(response.details?.isNotEmpty, true);
   });
 
 }

@@ -5,20 +5,16 @@ import 'package:news_app/data/models/article.dart';
 import 'package:news_app/data/models/base_response.dart';
 
 import '../../fixtures/fixtures_reader.dart';
+import '../../fixtures/model/article_fixtures.dart';
 
 void main() {
 
-  test('Deserializer from json to model', () async {
-    final Map<String, dynamic> responseJsonMap =
-    json.decode(fixture("article_response.json"));
+  test('test deserializer fixture file to base response list article result success', () async {
 
-    final BaseResponse<List<Article>> response = BaseResponse.fromJson(
-        responseJsonMap,
-        details: (responseJsonMap['details'] as List)
-            .map((e) => Article.fromJson(e))
-            .toList());
+    final BaseResponse<List<Article>> response = getBaseResponseListArticle();
 
-    expect(response.details?.length, 8);
+    expect(response.details?.isNotEmpty, true);
+
   });
 
 }

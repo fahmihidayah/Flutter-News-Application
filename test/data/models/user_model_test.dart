@@ -5,14 +5,11 @@ import 'package:news_app/data/models/base_response.dart';
 import 'package:news_app/data/models/user.dart';
 
 import '../../fixtures/fixtures_reader.dart';
+import '../../fixtures/model/auth_fixtures.dart';
 
 void main() {
-  test('test deserializer user model', () async {
-    final Map<String, dynamic> responseJsonMap =
-    json.decode(fixture("auth_response.json"));
-    final BaseResponse<User> response = BaseResponse.fromJson(
-        responseJsonMap,
-        details: User.fromJson(responseJsonMap['details']));
+  test('test deserializer fixture file to base response user result success', () async {
+    final BaseResponse<User> response = getBaseResponseUser();
     expect(response.details?.username, "fahmi");
   });
 }
