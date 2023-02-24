@@ -10,6 +10,7 @@ import 'package:news_app/data/remote/config/config_api.dart';
 import 'package:news_app/data/remote/config/config_api_impl.dart';
 
 import '../../fixtures/fixtures_reader.dart';
+import '../../fixtures/model/configurations_fixtures.dart';
 import 'config_api_test.mocks.dart';
 
 
@@ -23,11 +24,9 @@ void main() {
   });
 
   group('getListConfig', () {
-    final Map<String, dynamic> mapResponse = json.decode(
-        fixture('configurations_response.json'));
-    final BaseResponse<List<Configuration>> response =
-    BaseResponse.fromJson(mapResponse, details: (mapResponse['details'] as List)
-        .map((e) => Configuration.fromJson(e)).toList());
+    final Map<String, dynamic> mapResponse = getListConfigurationMap();
+    final BaseResponse<List<Configuration>> response = getBaseResponseListConfiguration();
+
     void prepareSuccessfulResponse() {
       when(mockDio.get('v1/configurations')).thenAnswer((
           realInvocation) async =>
@@ -40,7 +39,7 @@ void main() {
           ));
     }
 
-    test('make sure this endpoint called v1/configurations', () async {
+    test('test request to v1/configurations result success', () async {
       prepareSuccessfulResponse();
       final expectedResponse = await configApi.getListConfig();
       expect(expectedResponse.details?.length, response.details?.length);

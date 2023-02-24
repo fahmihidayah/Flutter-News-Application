@@ -11,6 +11,7 @@ import 'package:news_app/data/remote/auth/auth_api.dart';
 import 'package:news_app/data/remote/auth/auth_api_impl.dart';
 
 import '../../fixtures/fixtures_reader.dart';
+import '../../fixtures/model/auth_fixtures.dart';
 import 'auth_api_test.mocks.dart';
 
 
@@ -24,10 +25,8 @@ void main() {
   });
 
   group('login', () {
-    final Map<String, dynamic> mapResponse =
-        json.decode(fixture("auth_response.json"));
-    final BaseResponse<User> expectedResponse = BaseResponse.fromJson(mapResponse,
-        details: User.fromJson(mapResponse['details']));
+    final Map<String, dynamic> mapResponse = getUserMap();
+    final BaseResponse<User> expectedResponse = getBaseResponseUser();
     final LoginForm form = LoginForm(username: "fahmi", password: "123456789");
     void prepareSuccessfulRequest() {
       when(mockDio.post('v1/login', data: form.toJson())).thenAnswer((_) async => Future.value(Response(
@@ -37,7 +36,7 @@ void main() {
       )));
     }
 
-    test('request login success', () async {
+    test('test request to v1/login response success', () async {
       prepareSuccessfulRequest();
       final response = await authApi.login(form);
       expect(response.details?.username, expectedResponse.details?.username);

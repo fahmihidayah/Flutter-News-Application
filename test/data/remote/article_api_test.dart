@@ -10,6 +10,7 @@ import 'package:news_app/data/remote/article/article_api.dart';
 import 'package:news_app/data/remote/article/article_api_impl.dart';
 
 import '../../fixtures/fixtures_reader.dart';
+import '../../fixtures/model/article_fixtures.dart';
 import 'article_api_test.mocks.dart';
 
 @GenerateMocks([Dio])
@@ -22,10 +23,8 @@ void main() {
   });
 
   group("getListArticle", () {
-    final Map<String, dynamic> mapResponse = json.decode(fixture("article_response.json"));
-    final BaseResponse<List<Article>> response = BaseResponse.fromJson(mapResponse,
-        details: (mapResponse['details'] as List).map((e) => Article.fromJson(e)).toList()
-    );
+    final Map<String, dynamic> mapResponse = getListArticleMap();
+    final BaseResponse<List<Article>> response = getBaseResponseListArticle();
 
     void prepareSuccessfulRequest() {
       when(mockDio.get("v1/articles")).thenAnswer((_) => Future.value(Response(
@@ -35,7 +34,7 @@ void main() {
       )));
     }
 
-    test('request to v1/articles make sure it called', () async {
+    test('test request to v1/articles response success', () async {
       prepareSuccessfulRequest();
       final testResponse = await articleApi.getListArticle();
       expect(testResponse.details?.length, response.details?.length);
@@ -43,10 +42,9 @@ void main() {
   });
 
   group('getArticle', () {
-    final Map<String, dynamic> mapResponse = json.decode(fixture("article_detail_response.json"));
-    final BaseResponse<Article> response = BaseResponse.fromJson(mapResponse,
-        details: Article.fromJson(mapResponse['details'])
-    );
+    final Map<String, dynamic> mapResponse = getArticleMap();
+    final BaseResponse<Article> response = getBaseResponseArticle();
+
     void prepareSuccessfulRequest() {
       when(mockDio.get("v1/article/1")).thenAnswer((_) => Future.value(Response(
           statusCode: 200,
@@ -55,7 +53,7 @@ void main() {
       )));
     }
 
-    test('request to v1/article/1 make sure it called', () async {
+    test('test request to v1/article/1 response success', () async {
       prepareSuccessfulRequest();
       final testResponse = await articleApi.getArticleById("1");
       expect(testResponse.details?.title, response.details?.title);
