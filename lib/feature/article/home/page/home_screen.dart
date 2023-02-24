@@ -13,7 +13,7 @@ class HomeScreen extends BaseBlocStatelessWidget {
   List<BlocProvider<StateStreamableSource<Object?>>> createProviders() => [
         BlocProvider<HomeBloc>(
             create: (context) => HomeBloc(
-                loadNews: LoadNews(
+                loadNews: LoadNewsImpl(
                     articleRepository:
                         RepositoryProvider.of<ArticleRepository>(context)))
               ..add(InitialHomeEvent()))

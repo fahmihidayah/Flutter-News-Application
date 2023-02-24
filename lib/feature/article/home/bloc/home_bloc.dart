@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 import 'package:news_app/core/usecase/usecase.dart';
 import 'package:news_app/data/models/article.dart';
@@ -20,11 +21,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   Future<void> _onInitialEvent(
-      InitialHomeEvent event,
-      Emitter<HomeState> emitter) async {
-      emit(HomeStateProgress());
-      final result = await loadNews.call(NoParams());
-      result.fold((left) => emit(HomeStateFailure(failure: left)),
+      InitialHomeEvent event, Emitter<HomeState> emit) async {
+    emit(HomeStateProgress());
+    final result = await loadNews.call(NoParams());
+    result.fold((left) => emit(HomeStateFailure(failure: left)),
         (right) => emit(HomeStateSuccess(listArticle: right.details ?? [])));
   }
 }

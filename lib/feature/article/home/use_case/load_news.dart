@@ -5,11 +5,15 @@ import 'package:news_app/data/models/article.dart';
 import 'package:news_app/data/models/base_response.dart';
 import 'package:news_app/data/repository/article/article_repository.dart';
 
-class LoadNews extends UseCase<BaseResponse<List<Article>>, NoParams> {
+abstract class LoadNews extends UseCase<BaseResponse<List<Article>>, NoParams> {
+
+}
+
+class LoadNewsImpl extends LoadNews {
 
   final ArticleRepository articleRepository;
 
-  LoadNews({required this.articleRepository});
+  LoadNewsImpl({required this.articleRepository});
 
   @override
   Future<Either<Failure, BaseResponse<List<Article>>>> call(NoParams params) async {
